@@ -14,7 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // definisco la variabile hello_world
+    // definisco la variabile welcome_message
     $welcome_message = 'Hello World!';
-    return view('home', compact('welcome_message'));
-});
+    $app_name = 'Laravel primi passi';
+    return view('home', compact('welcome_message', 'app_name'));
+})->name('home');
+
+Route::get('/aboutus', function () {
+    $app_name = 'Laravel primi passi';
+    return view('about_us', compact('app_name'));
+})->name('about_us');
+
+Route::get('/team', function () {
+    $app_name = 'Laravel primi passi';
+    $team = ['Giuseppe de Simone', 'Mario Rossi', 'Luca Danieli', 'Riccardo Cavazza', 'Lucia Ginopoli'];
+    return view('team', compact('app_name', 'team'));
+})->name('team');
